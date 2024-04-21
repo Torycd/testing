@@ -11,7 +11,7 @@ const Greeting = () => {
       <h2>Hello world!</h2>
       {!changeText && <p>It's good to see you</p>}
       {changeText && <p>Changed!</p>}
-      <button onClick={changeTextHandler} type="button">Change text!</button>
+      <button onClick={changeTextHandler}>Change text!</button>
     </div>
   );
 };
