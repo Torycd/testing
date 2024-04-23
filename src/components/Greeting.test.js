@@ -1,5 +1,5 @@
-import { render } from "@testing-library/react";
-import { screen } from "@testing-library/react";
+import { render, screen } from "@testing-library/react";
+// import { screen } from "@testing-library/react";
 
 import { userEvent } from "@testing-library/user-event";
 import Greeting from "./Greeting";
@@ -15,6 +15,7 @@ describe("Greeting component", () => {
   });
 
   test('renders "good to see" you if the button was NOT clicked', () => {
+
     render(<Greeting />);
     const outputElement = screen.getByText("good to see you", {
       exact: false,
@@ -32,12 +33,13 @@ describe("Greeting component", () => {
     expect(outputElement).toBeInTheDocument();
   });
   test('does not render "good to see you" if the button was clicked', () => {
+    // 
     render(<Greeting />);
 
     const buttonElement = screen.getByRole("button");
     userEvent.click(buttonElement);
 
-    const outputElement = screen.getByText("good to see you", { exact: false });
-    expect(outputElement).toBeInTheDocument();
+    const outputElement = screen.queryByText("good to see you", { exact: false });
+    expect(outputElement).toBeNull();
   });
 });
